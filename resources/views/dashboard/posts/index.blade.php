@@ -5,6 +5,12 @@
     <h1 class="h2">My Posts, {{ auth()->user()->username }}</h1>
   </div>
 
+  @if (session()->has('success'))
+    <div class="alert alert-success" role="alert">
+      {{ session('success') }}
+    </div>
+  @endif
+
   <div class="table-responsive col-lg-8">
     <a href="/dashboard/posts/create" class="btn btn-secondary mb-3" type="button"> Create New Post</a>
     <table class="table table-striped table-sm">
