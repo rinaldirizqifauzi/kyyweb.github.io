@@ -69,7 +69,9 @@ class AdminCategoryController extends Controller
      */
     public function edit(Category $category)
     {
-
+         return view ('dashboard.categories.edit',[
+             'category'=> $category
+         ]);
     }
 
     /**
@@ -81,6 +83,18 @@ class AdminCategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        $rules = [
+            'name' => 'required|max:255',
+        ];
+        
+        if($request->slug != $category->slug){
+            $rules['slug'] = 'required|unique:posts';
+        }
+
+        $validatedData = $request->validate($rules);
+
+        Category::where('id', $category->id)->update($validatedData);
+        return redirect('/dashboard/categories')->with('success', 'New Category has been updated!');
         
         
     }
