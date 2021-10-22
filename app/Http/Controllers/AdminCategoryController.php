@@ -94,12 +94,12 @@ class AdminCategoryController extends Controller
     public function destroy(Category $category)
     {
         Category::destroy($category->id);
-        return redirect('/dashboard/categories')->with('success', 'Delete Category has been added!');
+        return redirect('/dashboard/categories')->with('success', 'Category has been deleted!');
     }
 
     public function checkSlug(Request $request)
     {
-        $slug = SlugService::createSlug(Category::class, 'slug', $request->name);
+        $slug = SlugService::createSlug(Category::class, 'slug', $request->title);
         return response()->json(['slug' => $slug]);
     }
 }
