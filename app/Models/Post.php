@@ -38,6 +38,11 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
     
     public function author()
     {

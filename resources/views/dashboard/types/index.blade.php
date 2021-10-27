@@ -2,7 +2,7 @@
 
 @section('container')
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">My Posts, {{ auth()->user()->username }}</h1>
+    <h1 class="h2">Jenis Barang, {{ auth()->user()->username }}</h1>
   </div>
 
   @if (session()->has('success'))
@@ -12,28 +12,23 @@
   @endif
 
   <div class="table-responsive col-lg-12">
-    <a href="/dashboard/posts/create" class="btn btn-secondary mb-3" type="button"> Create New Post</a>
+    <a href="/dashboard/types/create" class="btn btn-secondary mb-3" type="button"> Create Jenis Barang</a>
     <table class="table table-striped table-sm">
       <thead>
         <tr>
           <th scope="col">No</th>
-          <th scope="col">Nama </th>
-          <th scope="col">Kategori </th>
-          <th scope="col">Materi </th>
+          <th scope="col">Jenis Barang</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
-          @foreach ($posts as $post)
+        @foreach ($types as $type)
           <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $post->title }}</td>  
-            <td>{{ $post->category->name }}</td>
-            <td>{{ $post->type->jenis }}</td>
+            <td>{{ $type->jenis }}</td>
             <td>
-                <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-info"><span data-feather="eye"></span></a>
-                <a href="/dashboard/posts/{{ $post->slug }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
-                <form action="/dashboard/posts/{{ $post->slug }}" method="POST" class="d-inline">
+                <a href="/dashboard/types/{{ $type->slug }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
+                <form action="/dashboard/types/{{ $type->slug }}" method="POST" class="d-inline">
                   @method('delete')
                   @csrf
                   <button class="badge bg-danger border-0" onclick="return confirm('Are You Sure?')"><span data-feather="x-circle"></span></button>

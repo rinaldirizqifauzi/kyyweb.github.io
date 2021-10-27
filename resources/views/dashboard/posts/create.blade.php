@@ -26,10 +26,24 @@
             </div>
           @enderror
         </div>
+        {{-- Type --}}
+        <div class="mb-3">
+          <label for="type" class="form-label">Type</label>
+          <select class="form-select" name="type_id" required>
+            @foreach ($types as $type)
+                @if (old('type_id') == $type->id)
+                    <option value="{{ $type->id }}" selected>{{ $type->jenis }}</option>
+                @else
+                    <option value="{{ $type->id }}">{{ $type->jenis }}</option>
+                @endif
+            @endforeach
+          </select>
+        </div>  
+
+        {{-- Kategori --}}
         <div class="mb-3">
           <label for="category" class="form-label">Category</label>
-          <select class="form-select" name="category_id">
-            <option selected>Pilih Kategori</option>
+          <select class="form-select" name="category_id" required>
             @foreach ($categories as $category)
                 @if (old('category_id') == $category->id)
                     <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
@@ -39,6 +53,7 @@
             @endforeach
           </select>
         </div>
+   
         <div class="mb-3">
           <label for="body" class="form-label">Body</label>
           @error('body')
@@ -64,7 +79,7 @@
 
 
       document.addEventListener('trix-file-accept', function(e){
-          e.preventDefault();
+      e.preventDefault();
       })
   </script>
 @endsection

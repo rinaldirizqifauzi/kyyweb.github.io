@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Str;
@@ -30,7 +31,8 @@ class DashboardPostController extends Controller
     public function create()
     {
         return view ('dashboard.posts.create', [
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'types' => Type::all()
         ]);
     }
 
@@ -46,6 +48,7 @@ class DashboardPostController extends Controller
             'title' => 'required|max:255',
             'slug' => 'required|unique:posts',
             'category_id' => 'required',
+            'type_id' => 'required',
             'body' => 'required'
         ]);
         
@@ -80,7 +83,8 @@ class DashboardPostController extends Controller
     {
         return view ('dashboard.posts.edit', [
             'post' => $post,
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'types' => Type::all()
         ]);
     }
 
@@ -96,6 +100,7 @@ class DashboardPostController extends Controller
         $rules = [
             'title' => 'required|max:255',
             'category_id' => 'required',
+            'type_id' => 'required',
             'body' => 'required'
         ];
         

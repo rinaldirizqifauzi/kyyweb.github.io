@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class AdminCategoryController extends Controller
@@ -40,14 +41,19 @@ class AdminCategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {    
         $validatedData = $request->validate([
             'name' => 'required|max:255',
+            'image' => 'image|file|max:1024',
             'slug' => 'required|unique:categories',
         ]);
 
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('category-images');
+        }
+
         Category::create($validatedData);
-        return redirect('/dashboard/categories')->with('success', 'New Category has been added!');
+        return redirect('/dashboard/categories')->with('Berhasil', 'Tipe Baru Ditambahkan!');
     }
 
     /**
@@ -85,16 +91,24 @@ class AdminCategoryController extends Controller
     {
         $rules = [
             'name' => 'required|max:255',
+            'image' => 'image|file|max:1024',
         ];
-        
+
         if($request->slug != $category->slug){
             $rules['slug'] = 'required|unique:posts';
         }
 
         $validatedData = $request->validate($rules);
 
+        if ($request->file('image')) {
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('category-images');
+        }
+
         Category::where('id', $category->id)->update($validatedData);
-        return redirect('/dashboard/categories')->with('success', 'New Category has been updated!');
+        return redirect('/dashboard/categories')->with('Berhasil', 'Tipe Helm Dihapus!');
         
         
     }
@@ -107,6 +121,10 @@ class AdminCategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        if($category->image){
+            Storage::delete($category->image);
+        }
+
         Category::destroy($category->id);
         return redirect('/dashboard/categories')->with('success', 'Category has been deleted!');
     }
