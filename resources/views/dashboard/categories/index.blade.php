@@ -27,14 +27,14 @@
           <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $category->name }}</td>
-               <td>
-            @if ($category->image)
+            <td>
+              @if ($category->image)
                 <div style="max-height: 350px; overflow:hidden;"> 
                   <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" class="img-fluid">
                 </div>
-            @else
-              <img src="https://source.unsplash.com/user/erondu/1200x400?{{ $category->name }}" alt="{{ $category->name }}" class="img-fluid">
-            @endif
+              @else
+                <img src="https://source.unsplash.com/user/erondu/1200x400?{{ $category->name }}" alt="{{ $category->name }}" class="img-fluid">
+              @endif
             </td>
             <td>
                 <a href="/dashboard/categories/{{ $category->slug }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
