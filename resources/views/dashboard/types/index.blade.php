@@ -2,7 +2,7 @@
 
 @section('container')
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Jenis Barang, {{ auth()->user()->username }}</h1>
+    <h1 class="h2">Merek Helm, {{ auth()->user()->username }}</h1>
   </div>
 
   @if (session()->has('success'))
@@ -12,12 +12,12 @@
   @endif
 
   <div class="table-responsive col-lg-12">
-    <a href="/dashboard/types/create" class="btn btn-secondary mb-3" type="button"> Create Jenis Barang</a>
+    <a href="/dashboard/types/create" class="btn btn-secondary mb-3" type="button"> Tambah Merek Helm</a>
     <table class="table table-striped table-sm">
       <thead>
         <tr>
           <th scope="col">No</th>
-          <th scope="col">Jenis Barang</th>
+          <th scope="col">Merek Helm</th>
           <th scope="col">Action</th>
         </tr>
       </thead>

@@ -2,7 +2,7 @@
 
 @section('container')
    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Edit Post</h1>
+    <h1 class="h2">Edit Postingan</h1>
   </div>
 
   <div class="col-lg-8">
@@ -10,7 +10,7 @@
         @method('PUT')
         @csrf
         <div class="mb-3">
-          <label for="title" class="form-label">Title</label>
+          <label for="title" class="form-label">Judul</label>
           <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title', $post->title) }}" id="title"  required autofocus>
           @error('title')
               <div class="invalid-feedback">
@@ -56,7 +56,7 @@
         </div> 
         
         <div class="mb-3">
-          <label for="image" class="form-label">Upload Logo Kategori</label>
+          <label for="image" class="form-label">Edit Thumbnail Post</label>
           <input type="hidden" name="oldImage" value="{{ $post->image }}">
           @if ($post->image)
             <img src="{{ asset('storage/' . $post->image) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
@@ -72,7 +72,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="body" class="form-label">Body</label>
+          <label for="body" class="form-label">Edit Promosi</label>
           @error('body')
              <p class="text-danger"> {{ $message }}</p>
           @enderror  
@@ -80,7 +80,7 @@
           <trix-editor input="body"></trix-editor>
         </div>
        
-        <button type="submit" class="btn btn-primary">Update Post</button>
+        <button type="submit" class="btn btn-primary">Update Postingan Helm</button>
       </form>
   </div>
 

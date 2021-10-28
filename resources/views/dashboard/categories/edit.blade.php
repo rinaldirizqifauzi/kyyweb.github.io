@@ -3,7 +3,7 @@
 
 @section('container')
    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Ubah Tipe Helm</h1>
+    <h1 class="h2">Edit Kategori Helm</h1>
   </div>
 
   <div class="col-lg-8">
@@ -11,7 +11,7 @@
         @method('PUT')
         @csrf
         <div class="mb-3">
-          <label for="name" class="form-label">Nama</label>
+          <label for="name" class="form-label">Kategori Helm</label>
           <input type="text" name="name" class="form-control @error('nama') is-invalid @enderror" value="{{ old('name', $category->name) }}" id="name"  required autofocus>
           @error('name')
               <div class="invalid-feedback">
@@ -29,7 +29,7 @@
           @enderror
         </div>
         <div class="mb-3">
-          <label for="image" class="form-label">Upload Logo Kategori</label>
+          <label for="image" class="form-label">Update Thunbnail Kategori</label>
           <input type="hidden" name="oldImage" value="{{ $category->image }}">
           @if ($category->image)
             <img src="{{ asset('storage/' . $category->image) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
@@ -43,7 +43,7 @@
           </div>
           @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Update Tipe Helm</button>
+        <button type="submit" class="btn btn-primary">Update Kategori Helm</button>
       </form>
   </div>
 

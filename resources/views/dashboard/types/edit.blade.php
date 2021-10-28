@@ -11,7 +11,7 @@
         @method('PUT')
         @csrf
         <div class="mb-3">
-          <label for="jenis" class="form-label">Jenis</label>
+          <label for="jenis" class="form-label">Tipe Helm</label>
           <input type="text" name="jenis" class="form-control @error('jenis') is-invalid @enderror" value="{{ old('jenis', $types->jenis) }}" id="jenis"  required autofocus>
           @error('jenis')
               <div class="invalid-feedback">
@@ -28,7 +28,7 @@
             </div>
           @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Update Jenis Barang</button>
+        <button type="submit" class="btn btn-primary">Update Tipe Helm</button>
       </form>
   </div>
 

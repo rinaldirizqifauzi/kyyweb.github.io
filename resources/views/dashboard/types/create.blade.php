@@ -3,14 +3,14 @@
 
 @section('container')
    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Create Jenis Barang</h1>
+    <h1 class="h2">Tambah Merek Helm </h1>
   </div>
 
   <div class="col-lg-8">
       <form action="/dashboard/types" method="POST" class="mb-5">
         @csrf
         <div class="mb-3">
-          <label for="jenis" class="form-label">Jenis</label>
+          <label for="jenis" class="form-label">Merek Helm</label>
           <input type="text" name="jenis" class="form-control @error('jenis') is-invalid @enderror" value="{{ old('jenis') }}" id="jenis"  required autofocus>
           @error('jenis')
               <div class="invalid-feedback">
@@ -27,7 +27,7 @@
             </div>
           @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Create Category</button>
+        <button type="submit" class="btn btn-primary">Input Merek Helm</button>
       </form>
   </div>
 

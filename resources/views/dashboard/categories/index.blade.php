@@ -17,8 +17,8 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Nama</th>
-          <th scope="col">Gambar</th>
+          <th scope="col">Tipe Helm</th>
+          <th scope="col">Thumbnail Tipe Helm</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
